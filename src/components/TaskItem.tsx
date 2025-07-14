@@ -1,16 +1,18 @@
-import { component$, useSignal, $ } from '@builder.io/qwik';
+import { component$, useSignal, $, type QRL } from '@builder.io/qwik';
 import { type Task } from '~/utils/storage';
 import TaskDetailsModal from './TaskDetailsModal';
 
 interface TaskItemProps {
   task: Task;
-  onComplete$: (id: string) => void;
-  onDelete$: (id: string) => void;
+  onComplete$: QRL<(id: string) => void>;
+  onDelete$: QRL<(id: string) => void>;
 }
 
 export default component$<TaskItemProps>(({ task, onComplete$, onDelete$ }) => {
   const showDetails = useSignal(false);
   const showModal = useSignal(false);
+
+
 
   const priorityColors = {
     low: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
@@ -52,7 +54,7 @@ export default component$<TaskItemProps>(({ task, onComplete$, onDelete$ }) => {
                 >
                   {task.completed && (
                     <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                     </svg>
                   )}
                 </button>
@@ -181,7 +183,7 @@ export default component$<TaskItemProps>(({ task, onComplete$, onDelete$ }) => {
       <TaskDetailsModal
         task={task}
         isOpen={showModal.value}
-        onClose$={() => showModal.value = false}
+        onClose$={$(() => showModal.value = false)}
       />
     </>
   );

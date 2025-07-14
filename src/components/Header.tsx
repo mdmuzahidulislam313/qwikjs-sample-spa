@@ -37,7 +37,7 @@ export default component$(() => {
         title: 'Data Exported',
         message: 'Your data has been exported successfully',
       });
-    } catch (error) {
+    } catch {
       addNotification({
         type: 'error',
         title: 'Export Failed',
@@ -64,7 +64,7 @@ export default component$(() => {
               message: 'Invalid data format',
             });
           }
-        } catch (error) {
+        } catch {
           addNotification({
             type: 'error',
             title: 'Import Failed',

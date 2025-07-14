@@ -277,7 +277,7 @@ export default component$(() => {
       <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
         <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">7-Day Completion Trend</h3>
         <div class="flex items-end space-x-2 h-32">
-          {analytics.completionTrend.map((day, index) => (
+          {analytics.completionTrend.map((day) => (
             <div key={day.date} class="flex-1 flex flex-col items-center">
               <div class="flex-1 flex items-end">
                 <div 

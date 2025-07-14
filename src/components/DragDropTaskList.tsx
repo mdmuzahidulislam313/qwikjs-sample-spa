@@ -1,7 +1,7 @@
 import { component$, useSignal, useContext, $, useVisibleTask$ } from '@builder.io/qwik';
 import { AppContext } from '~/contexts/TaskContext';
 import { useNotifications } from './NotificationSystem';
-import { type Task } from '~/utils/storage';
+
 import TaskItem from './TaskItem';
 
 interface DragDropTaskListProps {

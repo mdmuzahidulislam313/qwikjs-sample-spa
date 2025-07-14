@@ -1,4 +1,4 @@
-import { component$, useSignal, useContext, $, useVisibleTask$ } from '@builder.io/qwik';
+import { component$, useSignal, useContext, $, useVisibleTask$, type QRL } from '@builder.io/qwik';
 import { AppContext } from '~/contexts/TaskContext';
 import { useNotifications } from './NotificationSystem';
 import { type Task } from '~/utils/storage';
@@ -6,7 +6,7 @@ import { type Task } from '~/utils/storage';
 interface TaskDetailsModalProps {
   task: Task;
   isOpen: boolean;
-  onClose$: () => void;
+  onClose$: QRL<() => void>;
 }
 
 export default component$<TaskDetailsModalProps>(({ task, isOpen, onClose$ }) => {
@@ -16,6 +16,8 @@ export default component$<TaskDetailsModalProps>(({ task, isOpen, onClose$ }) =>
   const editForm = useSignal<HTMLFormElement>();
   const commentText = useSignal('');
   const attachmentInput = useSignal<HTMLInputElement>();
+
+
 
   // Mock comments for demonstration
   const comments = [
